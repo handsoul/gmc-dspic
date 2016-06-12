@@ -1,0 +1,4 @@
+bin/*
+si/*
+objects/*
+!.gitignore
