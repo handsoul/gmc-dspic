@@ -12,7 +12,7 @@ int main(void)
     ecan2init();
     PWM_Init();
     MOTOR_EN  = 1;
-	MOTOR_DIR = 1;
+	MOTOR_DIR = 0;
 
 	while(1)
 	{
@@ -43,6 +43,7 @@ int main(void)
                 C2TR23CONbits.TXREQ3=1;
                 C2TR45CONbits.TXREQ4=1;
                 C2TR45CONbits.TXREQ5=1;
+				
 			}
 		}
 	}

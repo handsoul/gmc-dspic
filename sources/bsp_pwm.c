@@ -28,11 +28,11 @@ void PWM_Init(void)
 
     P1SECMPbits.SEVTDIR = 0;      //PWM 时基递增产生特殊事件信号
 	
-	P1TPER            = 10000;   //PWM 周期寄存器值(10M->10k)
+	P1TPER            = 5000;   //PWM 周期寄存器值(10M->10k)
 	
 	P1TMRbits.PTMR    = 0x0000;   //PWM 时基计数
 
-    P1DC3             = 10000;
+    P1DC3             = 5000;
   
     
 	// PWM时基
