@@ -47,6 +47,27 @@ typedef struct tagNorthRxMsgQueue
 }NORTH_RX_MSG_QUEUE_ST;
 
 
+#define _W(_p,offset) *(((u16*)p)+offset)
+#define _B(_p,offset) *(((u8*)p)+offset)
+
+// 数据打包.
+// 小端模式.
+
+#define PACK_CAN_MSG(SID,SRR,IDE,RTR,RB0,RB1,DLC,PBUF,DSRC) \
+{\
+    u8 __i = 0;
+     _W(PBUF,0) = ((SID&0x3FF)<<2)|((SRR&1)<<1)|(IDE&0x01);\
+     _W(PBUF,1) = ((SID>>16)&0xFFF);\
+     _W(PBUF,2) = (((SID>>11)&0x1F)<<10)|((RTR&0x01)<<9)|((RB1&0x01)<<8)|((RB0&0x01)<<4)|(DLC&0x0F);\
+     for (__i = 0;i < DLC;i++)\
+     {\
+        _B(PBUF,6) = _B(DSRC,__i);\
+     }\
+}
+
+
+
+
 extern NORTH_RX_MSG_QUEUE_ST g_stNorthRxMsgQueue;
 
 extern void ecan2init(void);

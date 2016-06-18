@@ -24,6 +24,23 @@
 #define DI_INPUT7 _RF5
 #define DI_INPUT8 _RF8
 
+typedef enum tagEnumInput
+{
+    DI_IN0 = 0,
+    DI_IN1,
+    DI_IN2,
+    DI_IN3,
+    DI_IN4,
+    DI_IN5,
+    DI_IN6,
+    DI_IN7,
+
+    //
+    DI_NUM,
+    
+}D_INPUT_CH_E;
+
+
 // 8Â·Êý×ÖÊä³ö.
 // RB7 OUT4.
 // RB8 OUT3.
