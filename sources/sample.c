@@ -19,6 +19,7 @@ void DI_Sample(void)
     g_stSysRunInfo.m_aucDI[DI_IN6] = DI_INPUT6;
     g_stSysRunInfo.m_aucDI[DI_IN7] = DI_INPUT7;
     
+    g_stSysRunInfo.m_ulAbsEncoder = ENCODER_ABS_VALUE;
 }
 
 // Ä£Äâ²ÉÑù.

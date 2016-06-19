@@ -66,8 +66,6 @@ typedef struct tagNorthRxMsgQueue
 }
 
 
-
-
 extern NORTH_RX_MSG_QUEUE_ST g_stNorthRxMsgQueue;
 
 extern void ecan2init(void);

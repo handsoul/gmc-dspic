@@ -28,3 +28,28 @@ void NorthRxMsgHandler(CAN_MSG_ST * pstMsg)
     }
 }
 
+
+// 上报所有信息.正常情况下是主动上报一部分.
+// 查询时,上报全部信息.
+void NorthUploadStatus(void)
+{
+    
+}
+
+// 设置具体的IO/输出.
+void NorthCtrlOutput(void)
+{
+}
+
+// 设置参数.
+
+void NorthSetParams(void)
+{
+}
+
+// 查询参数.todo: 引入参数管理.
+void NorthUploadParams(void)
+{
+}
+
+// 

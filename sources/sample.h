@@ -6,8 +6,12 @@
 //系统运行状态
 typedef struct tagSysRunInfo
 {
-    u8 m_aucDI[DI_NUM];
-    u8 m_aucAI[4];
+    u8  m_aucDI[DI_NUM];
+    u8  m_aucAI[4];
+    u32 m_ulAbsEncoder; // 绝对值编码器的原始值.
+    s32 m_ulRelEncoder; // ABZ编码器.
+    
+    
 }SYS_RUNINFO_ST;
 
 #endif
