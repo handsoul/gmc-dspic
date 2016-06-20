@@ -13,6 +13,7 @@
 typedef unsigned int ECAN2MSGBUF [ECAN2_MSG_BUF_LENGTH][8]; 
 extern ECAN2MSGBUF  ecan2msgBuf __attribute__((space(dma)));
 
+#define CAN_BUF_ADDR(ch) (&(ecan2msgBuf[ch&0x1F][0]))
 
 
 #define CAN_DATA_LEN            8       // CAN数据长度
@@ -47,21 +48,21 @@ typedef struct tagNorthRxMsgQueue
 }NORTH_RX_MSG_QUEUE_ST;
 
 
-#define _W(_p,offset) *(((u16*)p)+offset)
-#define _B(_p,offset) *(((u8*)p)+offset)
+#define _W(_p,offset) *(((u16*)_p)+offset)
+#define _B(_p,offset) *(((u8*)_p)+offset)
 
 // 数据打包.
 // 小端模式.
 
-#define PACK_CAN_MSG(SID,SRR,IDE,RTR,RB0,RB1,DLC,PBUF,DSRC) \
+#define PACK_CAN_MSG(SID,EID_05,EID_6_17,SRR,IDE,RTR,RB0,RB1,DLC,PBUF,DSRC) \
 {\
-    u8 __i = 0;
+    u8 __i = 0;\
      _W(PBUF,0) = ((SID&0x3FF)<<2)|((SRR&1)<<1)|(IDE&0x01);\
-     _W(PBUF,1) = ((SID>>16)&0xFFF);\
-     _W(PBUF,2) = (((SID>>11)&0x1F)<<10)|((RTR&0x01)<<9)|((RB1&0x01)<<8)|((RB0&0x01)<<4)|(DLC&0x0F);\
-     for (__i = 0;i < DLC;i++)\
+     _W(PBUF,1) = (EID_6_17&0xFFF);\
+     _W(PBUF,2) = ((EID_05&0x1F)<<10)|((RTR&0x01)<<9)|((RB1&0x01)<<8)|((RB0&0x01)<<4)|(DLC&0x0F);\
+     for (__i = 0;__i < DLC;__i++)\
      {\
-        _B(PBUF,6) = _B(DSRC,__i);\
+        _B(PBUF,6+__i) = _B(DSRC,__i);\
      }\
 }
 

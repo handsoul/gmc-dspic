@@ -472,38 +472,36 @@ void FAST_ISR _C1Interrupt(void)
 
 // 发送缓冲区是否空的查询.
 // 优先级最高的发送缓冲区,最后使用.避免出现高优先级缓冲区一直忙.低优先级缓冲区报文无法发出的情况.
-
-
 inline void TriggerSend(u8 ucChNo)
 {
 #define TX_SFR_BASE_ADDR ((u8*)&C2TR01CONbits)    
-    *(TX_SFR_BASE_ADDR + ucChNO) = *(TX_SFR_BASE_ADDR + ucChNO) | 0x08;
+    *(TX_SFR_BASE_ADDR + ucChNo) = *(TX_SFR_BASE_ADDR + ucChNo) | 0x08;
 #undef TX_SFR_BASE_ADDR
 }
 
+u8 LastTxBufPos = 0;
+
 inline u8 GetNextFreeCanBuf(void)
 {
-
-
-static u8 _t[256] = 
-{
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,5,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,6,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,5,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,7,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,5,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,6,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,5,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
-    0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,8,
-}
+    static u8 _t[256] = 
+    {
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,5,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,6,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,5,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,7,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,5,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,6,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,5,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,4,
+        0,1,0,2,0,1,0,3,0,1,0,2,0,1,0,8,
+    };
 
     u8 ucBufSt =( (C2TR01CONbits.TXREQ0 << 0)
                 |(C2TR01CONbits.TXREQ1 << 1)
@@ -528,22 +526,24 @@ bool SendCanMsg(CAN_MSG_ST * pstMsg,u8 ucMsgBufNo)
 
     if (i >= 8)
     {
-        return FALSE; // 缓冲区满.
+        return 0; // 缓冲区满.
     }
 
     // PACK_CAN_MSG(SID,SRR,IDE,RTR,RB0,RB1,DLC,PBUF,DSRC)
-    if (pstMsg->m_eFrameFormat == FRAME_FORMAT_EXT)
+    if (pstMsg->m_eFrameFormat == FRAME_FORMAT_STD)
     {
-        PACK_CAN_MSG(pstMsg->SID,0,1,0,0,0,pstMsg->m_ucDataLen,(ecan2msgBuf+ucMsgBufNo*16),pstMsg->m_aucData);
+        PACK_CAN_MSG((pstMsg->m_ulFrameID&0x7FFL),0,0,0,0,0,0,0,pstMsg->m_ucDataLen,CAN_BUF_ADDR(i),pstMsg->m_aucData);
     }
-    else if (pstMsg->m_eFrameFormat == FRAME_FORMAT_STD)
+    else if (pstMsg->m_eFrameFormat == FRAME_FORMAT_EXT)
     {
-        PACK_CAN_MSG(pstMsg->SID,0,0,0,0,0,pstMsg->m_ucDataLen,(ecan2msgBuf+ucMsgBufNo*16),pstMsg->m_aucData);
+        PACK_CAN_MSG((pstMsg->m_ulFrameID>>18),(pstMsg->m_ulFrameID&0x3FL),((pstMsg->m_ulFrameID>>6)&0xFFF),0,1,0,0,0,pstMsg->m_ucDataLen,CAN_BUF_ADDR(i),pstMsg->m_aucData);
     }
 
     TriggerSend(i);
 
-    return TRUE;
+    LastTxBufPos = i;
+
+    return 1;
 }
 
 void ReadCanMsg(const u16 * pusData,CAN_MSG_ST * pstMsg)

@@ -33,6 +33,7 @@ void NorthRxMsgHandler(CAN_MSG_ST * pstMsg)
 // 查询时,上报全部信息.
 void NorthUploadStatus(void)
 {
+    // 上报位置
     
 }
 
