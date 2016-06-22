@@ -17,15 +17,25 @@ void NorthCanRxMsgProcess(void)
 
 
 
-void NorthRxMsgHandler(CAN_MSG_ST * pstMsg)
+void NorthRxMsgHandler(CAN_MSG_ST * pstCanRxMsg)
 {
-	
-    if (pstMsg->m_ulFrameID == 0x100 && pstMsg->m_eFrameFormat == FRAME_FORMAT_STD)
+
+    CAN_MSG_ID_UN unCanMsgID;
+    u16 eSignalID;
+    
+    CMD_ID_E  eCmdIDType;
+    
+    unCanMsgID.m_ulMsgID = pstCanRxMsg->m_ulFrameID;
+    eSignalID= (((u16)0x0F&pstCanRxMsg->m_aucData[0]) << 8)|pstCanRxMsg->m_aucData[1]; 
+    
+    SwapBigLittleEndian(&unCanMsgID, 4);
+
+    // 根据通信协议号进行处理 (后面考虑放到CAN滤波中)
+    if (unCanMsgID.m_btMsgID.m_btProtoNO != PROTO_NO_UPPER_TO_GMC)
     {
-        // 设置电机转速和方向.
-        SetMotorPwm(pstMsg->m_aucData[0],pstMsg->m_aucData[1]);
-		++iHandleCnts;
+        return;
     }
+
 }
 
 

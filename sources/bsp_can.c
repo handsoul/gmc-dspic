@@ -479,8 +479,6 @@ inline void TriggerSend(u8 ucChNo)
 #undef TX_SFR_BASE_ADDR
 }
 
-u8 LastTxBufPos = 0;
-
 inline u8 GetNextFreeCanBuf(void)
 {
     static u8 _t[256] = 
@@ -540,8 +538,6 @@ bool SendCanMsg(CAN_MSG_ST * pstMsg,u8 ucMsgBufNo)
     }
 
     TriggerSend(i);
-
-    LastTxBufPos = i;
 
     return 1;
 }
