@@ -1,6 +1,25 @@
 #ifndef __NORTH_CAN_MSG_PROCESS_H__
 #define __NORTH_CAN_MSG_PROCESS_H__
 
+#define NORTH_CAN_TX_MSG_MAX_NUM      40      // CAN发送消息最大数目
+#define NORTH_CAN_RX_MSG_MAX_NUM      40      // CAN接收消息最大数目
+
+// 定义北向接收消息队列
+typedef struct tagNorthRxMsgQueue
+{
+    CAN_MSG_ST m_astRxMsg[NORTH_CAN_RX_MSG_MAX_NUM];  // 接收消息
+    u8 m_ucWrPtr;       // 队列写指针
+    u8 m_ucRdPtr;       // 队列读指针
+}NORTH_RX_MSG_QUEUE_ST;
+
+// 定义发送消息队列
+typedef struct tagNorthTxMsgQueue
+{
+    CAN_MSG_ST m_astTxMsg[NORTH_CAN_TX_MSG_MAX_NUM];  // 发送消息
+    u8 m_ucWrPtr;       // 队列写指针
+    u8 m_ucRdPtr;       // 队列读指针
+}NORTH_TX_MSG_QUEUE_ST;
+
 
 
 // 定义消息ID联合体
@@ -67,6 +86,8 @@ typedef enum tagAckResult
 // 定义命令ID
 typedef enum tagCmdID
 {
+    CMD_ID_AUTO_SEND      = 0x00,       // 主动上报
+    
     CMD_ID_BAT_GET_FIXED  = 0x40,       // 批量获取固有信息
     CMD_ID_SIN_GET_FIXED  = 0x41,       // 单信号获取固有信息
 
@@ -91,23 +112,28 @@ typedef enum tagMsgDir
 
 typedef enum tagSignalList
 {
-	SIG_ID_CELL_VOLT_1 = 0x100,
-	SIG_ID_CELL_VOLT_2 = 0x101,
-	SIG_ID_CELL_VOLT_3 = 0x102,
-	SIG_ID_CELL_VOLT_4 = 0x103,
-	SIG_ID_CELL_VOLT_5 = 0x104,
-	SIG_ID_CELL_VOLT_6 = 0x105,
-	SIG_ID_CELL_VOLT_7 = 0x106,
-	SIG_ID_CELL_VOLT_8 = 0x107,
+    SIG_ID_FM_VERSION  = 0x001, // 包括软硬件版本.
+    SIG_ID_BUILD_DATE  = 0x002, // 编译时间.
 
-	SIG_ID_CELL_TEMP_1 = 0x110,
-	SIG_ID_CELL_TEMP_2 = 0x111,
-	
-	SID_ID_MISC_INFO   = 0x120,//温度等其他信息.
+    SIG_ID_WORK_STATUS    = 0x100,
+    SIG_ID_SPEED_INFO     = 0x101,
+    SIG_ID_ABS_POS        = 0x102,
+    SIG_ID_REL_POS        = 0x103,
+    
+    
 }SIG_ID_E;
 
 
+extern NORTH_RX_MSG_QUEUE_ST g_stNorthRxMsgQueue;
+extern NORTH_RX_MSG_QUEUE_ST g_stNorthTxMsgQueue;
+
+
+
+extern void North_Auto_Send(void);
 extern void NorthCanRxMsgProcess(void);
 extern void NorthRxMsgHandler(CAN_MSG_ST * pstMsg);
+
+
+
 #endif 
 // end of file.

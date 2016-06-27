@@ -39,7 +39,7 @@ void PWM_Init(void)
     P1TCONbits.PTSIDL   = 0; // 停止模式下运行.
     P1TCONbits.PTCKPS   = 1; // Tcy/4 = 10M.
     P1TCONbits.PTMOD    = 0;
-    P1TCONbits.PTOPS    = 16U;// 
+    P1TCONbits.PTOPS    = 16;// 
     P1TCONbits.PTEN     = 1; // 开启.
 
 	// P1OVDCONbits.POUT3H = 1;

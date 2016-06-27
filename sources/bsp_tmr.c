@@ -33,6 +33,13 @@ void FAST_ISR _T1Interrupt( void )
 		_LATG8 = !_LATG8;
 		g_uc10msCnt = 0;
 	}
+
+    // 以10ms周期上报主动发送的报文.
+
+    
+    
+
+	
 }
 
 // end of file

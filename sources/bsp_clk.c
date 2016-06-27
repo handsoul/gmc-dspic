@@ -11,7 +11,6 @@ _FICD(ICS_PGD3);                                // 使用调试端口3
 // 系统工作时钟初始化.
 void Clk_Init(void)
 {
-	u32 j = 0;
     // 晶振Fposc = 10M.
     // N1 = 2 =  (PLLPRE +2 )   ,  PLLPRE = 0
     // N2 = 2 =  (PLLPOST+1 )*2 ,  PLLPOST= 0

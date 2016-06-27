@@ -3,6 +3,13 @@
 
 #include "includes.h"
 
+// 互斥赋值(例如: 主程序中访问"与ISR共享"的变量), 确保赋值过程不因被ISR打断而得到无效值
+#define MUTEX_SET_VALUE(a, b)       \
+    do          \
+    {           \
+        a = b;  \
+    } while (a != b)
+
 
 #define MAX(a, b)       ((a) > (b) ? (a) : (b))
 #define MIN(a, b)       ((a) < (b) ? (a) : (b))
@@ -25,6 +32,17 @@
 
 #define UPPER_LIMIT(value, upper)   if ((value) > (upper)) (value) = (upper)
 #define LOWER_LIMIT(value, lower)   if ((value) < (lower)) (value) = (lower)                         
+
+
+#define UNPACK16_BE(pbuf,usData) \
+    ((u8*)(pbuf))[0] = (u8)((usData) >> 8);\
+    ((u8*)(pbuf))[1] = (u8)((usData) >> 0);
+
+#define UNPACK32_BE(pbuf,usData) \
+    ((u8*)(pbuf))[0] = (u8)((usData) >> 24);\
+    ((u8*)(pbuf))[1] = (u8)((usData) >> 16);\
+    ((u8*)(pbuf))[2] = (u8)((usData) >> 8);\
+    ((u8*)(pbuf))[3] = (u8)((usData) >> 0);
 
 
 extern void MemorySet(void *pvDstAddr, u8 ucSetValue, u32 ulSize);

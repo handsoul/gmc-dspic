@@ -1,3 +1,4 @@
+#include "includes.h"
 // 采样.
 // DI
 // DO.
@@ -25,7 +26,7 @@ void DI_Sample(void)
 // 模拟采样.
 void Ana_Sample(void)
 {
-    
+    // 采样四个通道.
 }
 
 // 采样任务.

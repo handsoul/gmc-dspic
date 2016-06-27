@@ -19,17 +19,16 @@ typedef unsigned char   bool;       // b
 #endif
 
 // 定义bool型值
-#ifdef FALSE
-#undef FALSE
+//#ifdef FALSE
+//#undef FALSE
 #define FALSE           0
-#endif
-#ifdef TRUE
-#undef TRUE
+//#endif
+//#ifdef TRUE
+//#undef TRUE
 #define TRUE            1
-#endif
+//#endif
 
 #define FAST_ISR __attribute__((interrupt, shadow,no_auto_psv))
-
 
 #endif
 

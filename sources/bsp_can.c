@@ -13,9 +13,6 @@
  * 基本解决
  */
 
-NORTH_RX_MSG_QUEUE_ST g_stNorthRxMsgQueue;
-
-
 // 配置CAN通信.
 
 // 缓冲区用于发送.
@@ -201,7 +198,7 @@ remoteTransmit -> "0" Message transmitted is a normal message
 void ecan2WriteTxMsgBufId(unsigned int buf, long txIdentifier, unsigned int ide, unsigned int remoteTransmit){
 
 unsigned long word0=0, word1=0, word2=0;
-unsigned long sid10_0=0, eid5_0=0, eid17_6=0,a;
+unsigned long sid10_0=0, eid5_0=0, eid17_6=0;
 
 
 if(ide)
@@ -263,9 +260,10 @@ void ecan2WriteTxMsgBufData(unsigned int buf, unsigned int dataLength, unsigned 
 }
 
 /*------------------------------------------------------------------------------
-/* Disable RX Acceptance Filter
-/* void ecan1DisableRXFilter(int n)
-/*------------------------------------------------------------------------------
+ 	Disable RX Acceptance Filter
+	void ecan1DisableRXFilter(int n)
+*/
+
 /*
 n -> Filter number [0-15]
 */
@@ -524,7 +522,7 @@ bool SendCanMsg(CAN_MSG_ST * pstMsg,u8 ucMsgBufNo)
 
     if (i >= 8)
     {
-        return 0; // 缓冲区满.
+        return FALSE; // 缓冲区满.
     }
 
     // PACK_CAN_MSG(SID,SRR,IDE,RTR,RB0,RB1,DLC,PBUF,DSRC)
@@ -539,7 +537,7 @@ bool SendCanMsg(CAN_MSG_ST * pstMsg,u8 ucMsgBufNo)
 
     TriggerSend(i);
 
-    return 1;
+    return TRUE;
 }
 
 void ReadCanMsg(const u16 * pusData,CAN_MSG_ST * pstMsg)
@@ -619,5 +617,13 @@ void  FAST_ISR _C2Interrupt(void)
     }
 }
 
+
+// CAN硬件初始化.
+void CAN_Init(void)
+{
+    dma1init();
+    dma3init();
+    ecan2init();
+}
 
 // end of file

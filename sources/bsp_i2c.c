@@ -1,6 +1,8 @@
 #include "includes.h"
 
 
+#if 0
+
 bool I2C0_StartDataTransmit(void)
 {
 }
@@ -140,4 +142,5 @@ u8 I2C0_ReadBytes(u8 ucCtrlByte, u16 usReadAddr, u8 ucAddrType,
     return (u8)(ulTimeout > 0);
 }
 
+#endif
 
