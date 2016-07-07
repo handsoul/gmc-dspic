@@ -33,6 +33,8 @@
 #define UPPER_LIMIT(value, upper)   if ((value) > (upper)) (value) = (upper)
 #define LOWER_LIMIT(value, lower)   if ((value) < (lower)) (value) = (lower)                         
 
+#define UNUSED_ARGUEMENT(arg) if(arg){}
+
 
 #define UNPACK16_BE(pbuf,usData) \
     ((u8*)(pbuf))[0] = (u8)((usData) >> 8);\
@@ -44,6 +46,16 @@
     ((u8*)(pbuf))[2] = (u8)((usData) >> 8);\
     ((u8*)(pbuf))[3] = (u8)((usData) >> 0);
 
+
+#define PACK_BIT0(aucBuf,len,val)\
+    {\
+        u8 i = 0;\
+        val = 0;\
+        for(i = 0;i<len;i++)\
+        {\
+            val = (val << 1) | (aucBuf[i]&0x01);\
+        }\
+    }        
 
 extern void MemorySet(void *pvDstAddr, u8 ucSetValue, u32 ulSize);
 extern void MemoryCopy(void *pvDstAddr, void *pvSrcAddr, u32 ulSize);

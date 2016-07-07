@@ -6,7 +6,7 @@
 _FOSCSEL(FNOSC_FRC);             	// 配置外部晶振
 _FOSC(FCKSM_CSECMD & OSCIOFNC_OFF & POSCMD_XT ); // 配置时钟特性
 _FWDT(FWDTEN_OFF);                              // 关闭看门狗
-_FICD(ICS_PGD3);                                // 使用调试端口3
+_FICD(ICS_PGD3&JTAGEN_OFF);                       // 使用调试端口3,同时关闭JTAG.(RA1/TCK使用)
 
 // 系统工作时钟初始化.
 void Clk_Init(void)

@@ -557,7 +557,7 @@ void ReadCanMsg(const u16 * pusData,CAN_MSG_ST * pstMsg)
     {
         pstMsg->m_ulFrameID = ((u32)(pusData[0] & 0x1FFC) << 16)
                               | ((u32)(pusData[1] & 0x0FFF) << 6)
-                              | ((u32)(pusData[1] & 0xFC00) >> 10);
+                              | ((u32)(pusData[2] & 0xFC00) >> 10);
         pstMsg->m_eFrameFormat = FRAME_FORMAT_EXT;
     }
 

@@ -10,7 +10,6 @@ void GPIO_Init(void)
     _TRISA1 = 0;
     _LATA1  = 0;
 
-
     // RB.
     // RB0 - ICDDA.
     // RB1 - ICDCK
@@ -70,7 +69,7 @@ void GPIO_Init(void)
     // RD13- N4
     // RD14- Input51
     // RD15- Input61
-    TRISB = 0xFFFF; // 全部设置为输入.
+    TRISD = 0xFFFF; // 全部设置为输入.
 
     // RE (0 - 7 通道均为输出)
 
@@ -83,7 +82,7 @@ void GPIO_Init(void)
     // RE6 - DIR
     // RE7 - EN
 
-    TRISE = 0xFF00;
+    TRISE = 0x0000;
     LATE  = 0x00;
 
     // RF.
@@ -94,11 +93,11 @@ void GPIO_Init(void)
     // RF4 - INPUT71
     // RF5 - INPUT81
     // RF6
-    // RF7 - RE/DE.
+    // RF8 - RE/DE.
     // RF12- OUT5
     // RF13- OUT6
-    _TRISE7 = 0; // 输出.
-    _LATE7  = 1; // 485收发使能.
+    _TRISF8 = 0; // 输出.
+    _LATF8  = 1; // 485收发使能.
 
     _TRISF12 = 0;
     _TRISF13 = 0;

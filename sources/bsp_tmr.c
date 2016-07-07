@@ -23,6 +23,8 @@ u8 g_uc10msCnt = 0;
 
 void FAST_ISR _T1Interrupt( void )
 {   
+    static u16 s_ucMsgPeriod = 0;
+    
     IFS0bits.T1IF = 0;
     ++g_ucTickCount;
 	
@@ -31,14 +33,20 @@ void FAST_ISR _T1Interrupt( void )
 		_LATG6 = !_LATG6;
 		_LATG7 = !_LATG7;
 		_LATG8 = !_LATG8;
+		
 		g_uc10msCnt = 0;
 	}
 
     // 以10ms周期上报主动发送的报文.
-
-    
-    
-
+    if (++s_ucMsgPeriod >= TIME_TO_TICKS(AUTO_SND_INTERVAL_MS))
+    {
+        s_ucMsgPeriod = 0;
+        North_Auto_Send();
+    }
+    else
+    {
+        NorthTxMsgProcess();
+    }
 	
 }
 

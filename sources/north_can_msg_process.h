@@ -1,6 +1,14 @@
 #ifndef __NORTH_CAN_MSG_PROCESS_H__
 #define __NORTH_CAN_MSG_PROCESS_H__
 
+// 定义CAN发送错误码
+typedef enum tagCanTxErrCode
+{
+    RTN_OK      = TRUE,
+    RTN_ERROR   = FALSE,    
+}CAN_TX_ERR_CODE_E;
+
+
 #define NORTH_CAN_TX_MSG_MAX_NUM      40      // CAN发送消息最大数目
 #define NORTH_CAN_RX_MSG_MAX_NUM      40      // CAN接收消息最大数目
 
@@ -46,7 +54,7 @@ typedef union tagCanMsgIDUnion
         u32 m_btCntFlag : 1;    // [0]:     CNT位(0: 最后1帧, 1: 还有下1帧)      |
         u32 m_btRsv6V1  : 6;    // [1:6]:   保留位(填充1)               --->  0x0003  
         u32 m_btMsgDir  : 1;    // [7]:     消息方向(0: S->M, 1: M->S)           
-#endif
+#else
 
         /**********************************************
         * CPU   小端模式:数据的高位，保存在内存的高地址中
@@ -65,7 +73,7 @@ typedef union tagCanMsgIDUnion
         //bits[24:31]                                                           |
         u32 m_btProtoNO : 5;    // [24:28]: 协议号(协议类型)           --->  0x0003 
         u32 m_btRsv3V0  : 3;    // [29:31]: 保留位(填充0)
-
+#endif
     }m_btMsgID;                 // 消息ID(位域表示)
 }CAN_MSG_ID_UN;
 
@@ -87,6 +95,9 @@ typedef enum tagAckResult
 typedef enum tagCmdID
 {
     CMD_ID_AUTO_SEND      = 0x00,       // 主动上报
+
+    CMD_ID_SET_ACCELERATE = 0x10,       // 加速曲线设置
+    CMD_ID_GET_ACCELERATE = 0x20,       // 加速曲线查询
     
     CMD_ID_BAT_GET_FIXED  = 0x40,       // 批量获取固有信息
     CMD_ID_SIN_GET_FIXED  = 0x41,       // 单信号获取固有信息
@@ -100,6 +111,8 @@ typedef enum tagCmdID
     CMD_ID_BAT_GET_PARAM  = 0x90,       // 批量获取参数
     CMD_ID_SIN_GET_PARAM  = 0x91,       // 单信号获取参数
     CMD_ID_RANGE_GET_PARAM  = 0x91,     // 信号范围获取参数
+
+    
     
 }CMD_ID_E;
 
@@ -115,25 +128,75 @@ typedef enum tagSignalList
     SIG_ID_FM_VERSION  = 0x001, // 包括软硬件版本.
     SIG_ID_BUILD_DATE  = 0x002, // 编译时间.
 
+    
+    // auto send.
     SIG_ID_WORK_STATUS    = 0x100,
     SIG_ID_SPEED_INFO     = 0x101,
     SIG_ID_ABS_POS        = 0x102,
     SIG_ID_REL_POS        = 0x103,
+
+    // SIG_ID_REL_POS + 1 ~ SIG_ID_ELETRIC_STAUS-1 reserved for future usage.
+    
+    // STATUS.
+    SIG_ID_ELETRIC_STAUS  = 0x120,
+    SIG_ID_DI_STATUS_1    = 0x121,
+    SIG_ID_DI_STATUS_2    = 0x122,
+    SIG_ID_DO_STATUS_1    = 0x123,
+    SIG_ID_DO_STATUS_2    = 0x124,
+
+    SIG_ID_AI_STATUS_1    = 0x125,
+    SIG_ID_AI_STATUS_2    = 0x126,
+    SIG_ID_AI_STATUS_3    = 0x127,
+    SIG_ID_AI_STATUS_4    = 0x128,
+    
+    SIG_ID_AO_STAUTS_1    = 0x129,
+    SIG_ID_AO_STAUTS_2    = 0x12A,
+
+    // Control Params.
+    // output.
+    SIG_ID_CTRL_DO_1      = 0x150,
+    SIG_ID_CTRL_DO_2      = 0x151,
+    SIG_ID_CTRL_AO_1      = 0x152,
+    SIG_ID_CTRL_AO_2      = 0x153,
+
+    SIG_ID_CTRL_SW_1      = 0x154,
+    SIG_ID_CTRL_SW_2      = 0x155,
+
+    // 电机控制.
+    SIG_ID_CTRL_MOTOR_1     = 0x160, // 调试用.
+    SIG_ID_CTRL_MOTOR_2     = 0x161, // 调试用.
+
+    // 加速曲线的参数设置.
+
+    SIG_ID_SET_ACC_CURVE    = 0x180, // 
+
+    // J命令操作.
+    SIG_ID_CTRL_JCMD_START  = 0x040,
+    SIG_ID_CTRL_JCMD_1      = 0x040,
+    SIG_ID_CTRL_JCMD_2      = 0x041,
+    SIG_ID_CTRL_JCMD_3      = 0x042,
+    //
+    SIG_ID_CTRL_JCMD_MAX    = 0x0FF,
     
     
 }SIG_ID_E;
 
 
 extern NORTH_RX_MSG_QUEUE_ST g_stNorthRxMsgQueue;
-extern NORTH_RX_MSG_QUEUE_ST g_stNorthTxMsgQueue;
+extern NORTH_TX_MSG_QUEUE_ST g_stNorthTxMsgQueue;
 
+// 自动上报数据的周期.
+#define AUTO_SND_INTERVAL_MS        200
 
 
 extern void North_Auto_Send(void);
 extern void NorthCanRxMsgProcess(void);
 extern void NorthRxMsgHandler(CAN_MSG_ST * pstMsg);
+extern void NorthTxMsgProcess(void);
 
-
+extern void NorthCtrlOutput(u8 aucMsg[]);
+extern void NorthUploadStatus(u8 aucMsg[]);
+extern void NorthUploadVersionInfo(u8 aucMsg[]);
 
 #endif 
 // end of file.

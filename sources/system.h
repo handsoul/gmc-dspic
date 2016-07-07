@@ -19,6 +19,7 @@ typedef struct tagVerInfo
     u16 m_usSoftVerBuild;       // 软件B版本(构建/编译版本)
     BUILD_DATE_ST m_stBuildDate;// 软件构建日期(yyyy-mm-dd)
     s8  m_scHardVerion;         // 硬件版本('A', 'B', ...)[不支持硬件版本号的单板, 固定为'X']
+    s8  m_scBomVersion;         // BOM版本.
 }VER_INFO_ST;
 
 
@@ -26,6 +27,9 @@ typedef struct tagVerInfo
 void System_Init(void);
 extern u8 g_ucSysInitFault;
 extern u8 g_ucBoardAddr; // TODO: 增加单板地址配置.
+
+extern VER_INFO_ST g_stVerInfo;
+
 
 #endif
 // end of file.

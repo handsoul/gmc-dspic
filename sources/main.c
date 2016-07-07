@@ -6,6 +6,8 @@ u16 usCnt = 0;
 
 CAN_MSG_ST stMsg;
 
+u8 g_ucSendByte = 0;
+
 int main(void)
 {
     int  i =0 ;
@@ -28,20 +30,17 @@ int main(void)
 	    // 实时任务.
         NorthCanRxMsgProcess();
         Task_Sample();
-
         
 	    if (g_ucTickCount > 0)
 		{
 			g_ucTickCount = 0;
 
-
 			// 周期性任务.
-			
 			++usCnt;
 			if (usCnt >= 100)
 			{
 				usCnt = 0;
-				North_Auto_Send();
+				// SendByte(++g_ucSendByte);
 			}
 		}
 	}

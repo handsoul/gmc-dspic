@@ -5,12 +5,20 @@
 
 #include "includes.h"
 
+// 加载位置信号.
+
+
+
+
+// 加载物理信号名.
+
 
 // 系统资源的映射.
 void Init_Resource(void)
 {
-    
+    // 加载信号名称.
 }
+
 
 // 注册系统资源.
 void Register_Sys_Resource(void)

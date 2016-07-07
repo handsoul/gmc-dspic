@@ -2,6 +2,9 @@ Changelog
 	autor: ksl
 	mail : rtertliu at gmail.com
 
+2016-07-07
+	gpio module done.(add JTAGEN_OFF option).
+
 2016-06-23
 	first release , basic function implentmented , incluing:
 	1. board support package

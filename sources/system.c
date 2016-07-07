@@ -52,18 +52,22 @@ void VersionInit(void)
     CvtBuildDate(__DATE__, &g_stVerInfo.m_stBuildDate);
 
     // 硬件上ID编码从1开始.
-    g_stVerInfo.m_scHardVerion =  'A';
+    g_stVerInfo.m_scHardVerion = 'A';
+    g_stVerInfo.m_scBomVersion = 0; 
 }
 
 
 // 系统硬件初始化.
 void Hardware_Init(void)
 {
+	ADC_Init();
     Clk_Init();
 	Tmr_Init();
 	GPIO_Init();
 	CAN_Init();
     PWM_Init();
+    Uart_Init();
+    
 }
 
 // 数据初始化.

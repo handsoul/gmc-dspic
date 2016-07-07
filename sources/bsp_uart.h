@@ -4,9 +4,10 @@
 #include "includes.h"
 
 
-#define UART_BUAD_RATE 115200
+#define UART_BUAD_RATE 9600
 
-
+extern void SendByte(u8 ucData);
+extern void Uart_Init(void);
 
 
 #endif // __BSP_UART_H__

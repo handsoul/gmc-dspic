@@ -3,10 +3,6 @@
 
 #include "includes.h"
 
-
-
-
-
 #endif // __RESOURCE_MAP_H__
 
 // end of file

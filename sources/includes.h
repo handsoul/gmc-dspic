@@ -2,7 +2,7 @@
 #define __INCLUDES_H__
 
 // 设备相关
-#include "p33FJ128MC710.h"
+#include <p33FJ128MC710.h>
 // 类型定义
 #include "types.h"
 
@@ -20,6 +20,8 @@
 #include "bsp_adc.h"
 #include "bsp_pwm.h"
 #include "bsp_wdt.h"
+#include "bsp_uart.h"
+#include "bsp_adc.h"
 
 
 // 通信处理.
