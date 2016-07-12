@@ -11,6 +11,10 @@
 #define DISABLE_485OUTPUT (_LATF8 = 0)
 
 
+#define EE_WP _LATA4
+#define DISABLE_EE_WP  (EE_WP = 0)
+#define ENABLE_EE_WP   (EE_WP = 1)
+
 // RB12 INPUT11
 // RB13 INPUT21
 // RB14 INPUT31

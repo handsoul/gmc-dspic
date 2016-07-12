@@ -1,4 +1,7 @@
 #include "includes.h"
+// to use some predefined functions.
+#define FCY     40000000UL
+#include <libpic30.h>
 
 // Calc CRC16.
 u16 CRC16(u8* pchMsg, u16 wDataLen)
@@ -378,16 +381,15 @@ void DelayTick(u16 usCount)
  *           相比T1时间, 调用开销可以忽略. 
  *           T1 = 450 + 175 * 5711(ns) = 1000050(ns) ~= 1(ms).
 ***********************************************************/
+
+
+
 void DelayMS(u16 usCount)
 {
     while (usCount--)
     {
-        if (usCount % 100 == 0)
-        {
-            ClearWdt();
-        }
-        
-        DelayTick(5711);
+        __delay_ms(1);
+		ClearWdt();
     }
 }  
 

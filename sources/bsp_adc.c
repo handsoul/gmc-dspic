@@ -55,7 +55,7 @@ u16 GetADCResult(u8 ucCh)
     {
         while(AD1CON1bits.DONE != 1)
         {
-            if (++j > 100000) // 防止转换超时.
+            if (++j > 10000) // 防止转换超时.
             {	
 				++usTimeoutCnt;
                 break;

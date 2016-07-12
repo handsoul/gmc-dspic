@@ -463,6 +463,7 @@ void NorthCtrlOutput(u8 aucMsg[])
 // 设置参数.
 void NorthSetParams(void)
 {
+
 }
 
 // 查询参数.todo: 引入参数管理.

@@ -10,6 +10,9 @@ void GPIO_Init(void)
     _TRISA1 = 0;
     _LATA1  = 0;
 
+	_TRISA4 = 0; // EEPROM_WP.
+	_LATA4  = 0;
+
     // RB.
     // RB0 - ICDDA.
     // RB1 - ICDCK

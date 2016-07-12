@@ -13,17 +13,6 @@ int main(void)
     int  i =0 ;
     
     System_Init();
-    MOTOR_EN  = 1;
-	MOTOR_DIR = 0;
-
-    stMsg.m_ulFrameID = 0x50;
-    stMsg.m_ucDataLen = 8;
-    stMsg.m_eFrameFormat = FRAME_FORMAT_STD;
-    
-    for(i = 0 ;i <8 ;i++)
-    {
-        stMsg.m_aucData[i] = i ;
-    }
     
 	while(1)
 	{
@@ -39,6 +28,9 @@ int main(void)
 			++usCnt;
 			if (usCnt >= 100)
 			{
+				_LATG6 = !_LATG6;
+				_LATG7 = !_LATG7;
+				_LATG8 = !_LATG8;
 				usCnt = 0;
 				// SendByte(++g_ucSendByte);
 			}

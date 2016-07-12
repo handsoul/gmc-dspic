@@ -2,19 +2,6 @@
 MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
 Version=1.0
 [File000]
-Location=F:\gmc\gmc-dspic\objects\bsp_485.o
-Folder=Intermediary
-DeviceName=dsPIC33FJ128MC710
-LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
-LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
-LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
-PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=-g -Wall
-TraceCmdString=
-DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
-[File001]
 Location=F:\gmc\gmc-dspic\objects\bsp_can.o
 Folder=Intermediary
 DeviceName=dsPIC33FJ128MC710
@@ -22,12 +9,12 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
-[File002]
+[File001]
 Location=F:\gmc\gmc-dspic\objects\bsp_clk.o
 Folder=Intermediary
 DeviceName=dsPIC33FJ128MC710
@@ -35,12 +22,12 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
-[File003]
+[File002]
 Location=F:\gmc\gmc-dspic\objects\bsp_gpio.o
 Folder=Intermediary
 DeviceName=dsPIC33FJ128MC710
@@ -48,12 +35,12 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
-[File004]
+[File003]
 Location=F:\gmc\gmc-dspic\objects\bsp_eeprom.o
 Folder=Intermediary
 DeviceName=dsPIC33FJ128MC710
@@ -61,12 +48,12 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
-[File005]
+[File004]
 Location=F:\gmc\gmc-dspic\objects\bsp_i2c.o
 Folder=Intermediary
 DeviceName=dsPIC33FJ128MC710
@@ -74,12 +61,12 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
-[File006]
+[File005]
 Location=F:\gmc\gmc-dspic\objects\bsp_pwm.o
 Folder=Intermediary
 DeviceName=dsPIC33FJ128MC710
@@ -87,12 +74,12 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
-[File007]
+[File006]
 Location=F:\gmc\gmc-dspic\objects\bsp_tmr.o
 Folder=Intermediary
 DeviceName=dsPIC33FJ128MC710
@@ -100,12 +87,12 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
-[File008]
+[File007]
 Location=F:\gmc\gmc-dspic\objects\bsp_wdt.o
 Folder=Intermediary
 DeviceName=dsPIC33FJ128MC710
@@ -113,12 +100,12 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
-[File009]
+[File008]
 Location=F:\gmc\gmc-dspic\objects\main.o
 Folder=Intermediary
 DeviceName=dsPIC33FJ128MC710
@@ -126,12 +113,12 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
-[File010]
+[File009]
 Location=F:\gmc\gmc-dspic\objects\system.o
 Folder=Intermediary
 DeviceName=dsPIC33FJ128MC710
@@ -139,12 +126,12 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
-[File011]
+[File010]
 Location=F:\gmc\gmc-dspic\objects\bsp_qei.o
 Folder=Intermediary
 DeviceName=dsPIC33FJ128MC710
@@ -152,12 +139,12 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
-[File012]
+[File011]
 Location=F:\gmc\gmc-dspic\objects\north_can_msg_process.o
 Folder=Intermediary
 DeviceName=dsPIC33FJ128MC710
@@ -165,12 +152,64 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
 LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
 PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall
+TraceCmdString=
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
+[File012]
+Location=F:\gmc\gmc-dspic\objects\public_functions.o
+Folder=Intermediary
+DeviceName=dsPIC33FJ128MC710
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
+PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-g -Wall
 TraceCmdString=
 DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
 [File013]
+Location=F:\gmc\gmc-dspic\objects\sample.o
+Folder=Intermediary
+DeviceName=dsPIC33FJ128MC710
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
+PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall
+TraceCmdString=
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
+[File014]
+Location=F:\gmc\gmc-dspic\objects\bsp_uart.o
+Folder=Intermediary
+DeviceName=dsPIC33FJ128MC710
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
+PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall
+TraceCmdString=
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
+[File015]
+Location=F:\gmc\gmc-dspic\objects\bsp_adc.o
+Folder=Intermediary
+DeviceName=dsPIC33FJ128MC710
+LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
+LanguageToolID={069BD372-6CA0-40D4-BF2F-5DC806D05083}
+LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
+PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall
+TraceCmdString=
+DebugOptions=-D__DEBUG -D__MPLAB_DEBUGGER_PK3=1
+[File016]
 Location=F:\gmc\gmc-dspic\bin\LX-100PIN-TMR1.cof
 Folder=Output
 DeviceName=dsPIC33FJ128MC710
@@ -178,12 +217,12 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={433C3D55-811D-409D-A6BF-159CF9355B42}
 LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-ld.exe
 PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)" -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem
 TraceCmdString=
 DebugOptions=--defsym=__MPLAB_DEBUG=1 --defsym=__MPLAB_DEBUGGER_PK3=1 --defsym=__ICD2RAM=1
-[File014]
+[File017]
 Location=F:\gmc\gmc-dspic\bin\LX-100PIN-TMR1.hex
 Folder=Output
 DeviceName=dsPIC33FJ128MC710
@@ -191,12 +230,11 @@ LanguageToolSuiteID={479DDE59-4D56-455E-855E-FFF59A3DB57E}
 LanguageToolID={433C3D55-811D-409D-A6BF-159CF9355B42}
 LanguageToolLocation=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-ld.exe
 PPAD=$(BINDIR)|bin||$(TMPDIR)|objects||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|sources\bsp_485.c|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c||<obj>||<lib>||<lkr>||
+SOLK=<src>|sources\bsp_can.c|sources\bsp_clk.c|sources\bsp_gpio.c|sources\bsp_eeprom.c|sources\bsp_i2c.c|sources\bsp_pwm.c|sources\bsp_tmr.c|sources\bsp_wdt.c|sources\main.c|sources\system.c|sources\bsp_qei.c|sources\north_can_msg_process.c|sources\public_functions.c|sources\sample.c|sources\bsp_uart.c|sources\bsp_adc.c||<obj>||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)" -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem
 TraceCmdString=
 DebugOptions=--defsym=__MPLAB_DEBUG=1 --defsym=__MPLAB_DEBUGGER_PK3=1 --defsym=__ICD2RAM=1
 [TOOL_LOC_STAMPS]
-tool_loc{DE18EB1A-B46B-486B-B96F-A811A635DFAC}=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-as.exe
 tool_loc{069BD372-6CA0-40D4-BF2F-5DC806D05083}=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-gcc.exe
 tool_loc{433C3D55-811D-409D-A6BF-159CF9355B42}=D:\Program Files\Microchip\mplabc30\v3.30\bin\pic30-ld.exe

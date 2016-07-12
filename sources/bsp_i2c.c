@@ -1,146 +1,159 @@
 #include "includes.h"
 
 
-#if 0
-
-bool I2C0_StartDataTransmit(void)
+void I2C1_Init(void)         // I2C1初始化
 {
+	TRISGbits.TRISG2 = 0;    // SCL1 
+	TRISGbits.TRISG3 = 1;    // SDA1 
+	I2C1CONbits.SCLREL = 1;  // SCL 释放时钟
+	I2C1CONbits.DISSLW = 1;  // 禁止斜率控制
+	I2C1BRG = 0x395;         // 40MHZ,100K,395; 40Mhz,400K,95.
+	I2C1CONbits.I2CEN  = 1;  // 使能I2C1模块
 }
 
-bool I2C0_StopDataTransmit(void)
+//-------------------------------------------------------------------------------//
+void I2C1_Close(void)        //关闭 I2C1
 {
+	I2C1CONbits.I2CEN = 0;
+	_SI2C1IE = 0;
+	_MI2C1IE = 0;
+	_SI2C1IF = 0;
+	_MI2C1IF = 0;
+}
+//-------------------------------------------------------------------------------//
+void I2C1_Idle(void)         // 总线空闲检测
+{
+    while(I2C1CONbits.SEN || I2C1CONbits.PEN || I2C1CONbits.RCEN || 
+          I2C1CONbits.RSEN || I2C1CONbits.ACKEN || I2C1STATbits.TRSTAT);	
+}
+//-------------------------------------------------------------------------------//
+void I2C1_Start(void)	     // 启动 I2C1
+{
+     I2C1CONbits.SEN = 1;
+}
+//-------------------------------------------------------------------------------//
+void I2C1_Restart(void)	     // 重启动I2C1
+{ 
+    I2C1CONbits.RSEN = 1;
+}
+//-------------------------------------------------------------------------------//
+void I2C1_Stop(void)	     // 停止  I2C1
+{
+     I2C1CONbits.PEN = 1;
+}
+//-------------------------------------------------------------------------------//
+void I2C1_Done(void)	     // 等待  I2C1
+{
+	while( !IFS1bits.MI2C1IF );
+	IFS1bits.MI2C1IF = 0;
+}	
+
+void I2C1_Ack(void)          // 产生应答 ACK
+{
+	I2C1CONbits.ACKDT = 0;
+	I2C1CONbits.ACKEN = 1;
 }
 
-bool I2C0_WaitTransDone(void)
+void I2C1_NotAck(void)       // 不产生应答 ACK
 {
+    I2C1CONbits.ACKDT = 1; 
+    I2C1CONbits.ACKEN = 1;
 }
 
-bool I2C0_WaitAck(void)
+char I2C1_DataRdy(void)      // 接收缓冲区状态  1:满    0:空
 {
+     return I2C1STATbits.RBF;
 }
 
-
-
-/***********************************************************
- * 函数名称: I2C0_WriteBytes
- * 函数功能: I2C写数据
- * 输入参数: ucCtrlByte:    控制字节
- *           usWriteAddr:   待写地址
- *           ucAddrType:    待写地址类型(0: 8bits, 1: 16bits)
- *           pucSrcData:    待写源数据指针
- *           ulDataNum:     待写数据长度字节数
- * 输出参数: 无.
- * 返 回 值: 是否发生超时. 0表示没有发生超时. 1表示发生过超时.
- * 备    注: I2C写数据的过程:
- *           1.启动传输;
- *           2.发送控制字节(方向为写, 等待响应, 下同);
- *           3.发送待写地址;
- *           4.发送待写数据内容;
- *           5.停止传输;
-***********************************************************/
-u8 I2C0_WriteBytes(u8 ucCtrlByte, u16 usWriteAddr, u8 ucAddrType, 
-                         u8 *pucSrcData, u32 ulDataNum)
+unsigned char I2C1_Read(void)          // 主控读
 {
-    u32 i;
+    I2C1CONbits.RCEN = 1;
+    while(I2C1CONbits.RCEN);
+    I2C1STATbits.I2COV = 0;
+    return(I2C1RCV);
+}
+
+char I2C1_Write(unsigned char WRDATA)  // 主控写
+{
+    I2C1TRN = WRDATA;
+    if(I2C1STATbits.IWCOL)   return -1;
+    else                     return 0;
+}
+void I2C2_Init(void)         // I2C2初始化
+{
+    _TRISA2 = 0; // SCL2.
+    _TRISA2 = 1; // SCL3.
     
-    u32 ulTimeout = 0;    
-
-    // 1.启动数据传输
-    I2C0_StartDataTransmit();
-
-    // 2.发送控制字节
-    I2C0_DATA = (ucCtrlByte & 0xFE);    // [0]: 0, 写数据
-    ulTimeout += I2C0_WaitAck();
-    
-    // 3.发送待写地址
-    if (ucAddrType == I2C_ADDR_TYPE_16BITS)     // 16位地址模式时先发送高8位
-    {
-        I2C0_DATA = (u8)(usWriteAddr >> 8);
-        ulTimeout += I2C0_WaitAck();
-    }
-    I2C0_DATA = (u8)usWriteAddr;
-    ulTimeout += I2C0_WaitAck();
-
-    // 4.发送数据内容
-    for (i = 0; i < ulDataNum; ++i)
-    {
-        I2C0_DATA = pucSrcData[i];
-        ulTimeout += I2C0_WaitAck();
-    }
-
-    // 5.停止数据传输
-    I2C0_StopDataTransmit();
-    
-    return (u8)(ulTimeout > 0);
+	I2C2CONbits.SCLREL = 1;  // SCL 释放时钟
+	I2C2CONbits.DISSLW = 1;  // 禁止斜率控制
+	I2C2BRG = 0x395;         // 40MHZ,100K,395; 40Mhz,400K,95.
+	I2C2CONbits.I2CEN  = 1;  // 使能I2C2模块
 }
 
-/***********************************************************
- * 函数名称: I2C0_ReadBytes
- * 函数功能: I2C读数据
- * 输入参数: ucCtrlByte:    控制字节
- *           usReadAddr:    待读地址
- *           ucAddrType:    待读地址类型(0: 8bits, 1: 16bits)
- *           pucDstData:    待读出数据放置的目标指针
- *           ucDataNum:     待读出数据长度字节数
- * 输出参数: 无.
- * 返 回 值: 无.
- * 备    注: I2C读数据的过程:
- *           1.启动传输;
- *           2.发送控制字节(方向为写, 等待响应, 下同);
- *           3.发送待读地址;  ---- 这一点不要忘了, 先写待读地址下去.
- *           4.重复发送起始条件(启动读数据流程), 发送控制字节(方向为读);
- *           5.设置为接收模式, 读出数据(前N-1个数据有应答['0'], 最后一个数据无应答['1']);
- *           6.停止传输;
-***********************************************************/
-u8 I2C0_ReadBytes(u8 ucCtrlByte, u16 usReadAddr, u8 ucAddrType, 
-                        u8 *pucDstData, u32 ulDataNum)
+void I2C2_Close(void)        //关闭 I2C2
 {
-    u32 i;
-    u32 ulTimeout = 0;
-   
-    // 1.启动数据传输
-    I2C0_StartDataTransmit();
-   
-    // 2.发送控制字节
-    I2C0_DATA = (ucCtrlByte & 0xFE);    // [0]: 0, 写数据
-    ulTimeout += I2C0_WaitAck();
-    
-    // 3.发送待读地址
-    if (ucAddrType == I2C_ADDR_TYPE_16BITS)     // 16位地址模式时先发送高8位
-    {
-        I2C0_DATA = (u8)(usReadAddr >> 8);
-        ulTimeout += I2C0_WaitAck();
-    }
-    I2C0_DATA = (u8)usReadAddr;
-    ulTimeout += I2C0_WaitAck();
-
-    // 4. 重复发送起始条件(启动读数据流程)
-    I2C0_RPT_ST_AG;
-    I2C0_DATA = (ucCtrlByte | 0x01); // 发送控制字节(方向为读)
-    ulTimeout += I2C0_WaitAck();
-   
-    // 5.设置为接收模式, 读出数据
-    I2C0_DIR_RX;
-    // 主机接收模式下, 读IBDR寄存器来初始化接收(参考数据手册), 实际数据丢弃
-    i = I2C0_DATA;
-    // 前N-1个字节, 回送应答(I2C0_StartDataTransmit中已使能)
-    for (i = 0; i < ulDataNum - 1; ++i)
-    {
-        ulTimeout += I2C0_WaitTransDone();
-        // 取出寄存器中的数据
-        pucDstData[i] = I2C0_DATA;
-    }
-    // 接收最后一个字节不应答
-    I2C0_ACK_DISABLE;
-    ulTimeout += I2C0_WaitTransDone();
-      
-    // 5.停止数据传输
-    I2C0_StopDataTransmit();
-    // 取出接收的最后一个字节
-    pucDstData[i] = I2C0_DATA;
-    
-    return (u8)(ulTimeout > 0);
+	I2C2CONbits.I2CEN = 0;
+	_SI2C2IE = 0;
+	_MI2C2IE = 0;
+	_SI2C2IF = 0;
+	_MI2C2IF = 0;
 }
 
-#endif
+void I2C2_Idle(void)         // 总线空闲检测
+{
+    while(I2C2CONbits.SEN || I2C2CONbits.PEN || I2C2CONbits.RCEN || 
+          I2C2CONbits.RSEN || I2C2CONbits.ACKEN || I2C2STATbits.TRSTAT);	
+}
 
+void I2C2_Start(void)	     // 启动 I2C2
+{
+     I2C2CONbits.SEN = 1;
+}
+
+void I2C2_Restart(void)	     // 重启动I2C2
+{ 
+    I2C2CONbits.RSEN = 1;
+}
+
+void I2C2_Stop(void)	     // 停止  I2C2
+{
+     I2C2CONbits.PEN = 1;
+}
+
+void I2C2_Done(void)	     // 等待  I2C2
+{
+	while( !IFS3bits.MI2C2IF );
+	IFS3bits.MI2C2IF = 0;
+}	
+
+void I2C2_Ack(void)          // 产生应答 ACK
+{
+	I2C2CONbits.ACKDT = 0;
+	I2C2CONbits.ACKEN = 1;
+}
+
+void I2C2_NotAck(void)       // 不产生应答 ACK
+{
+    I2C2CONbits.ACKDT = 1; 
+    I2C2CONbits.ACKEN = 1;
+}
+
+char I2C2_DataRdy(void)      // 接收缓冲区状态  1:满    0:空
+{
+     return I2C2STATbits.RBF;
+}
+
+unsigned char I2C2_Read(void)          // 主控读
+{
+    I2C2CONbits.RCEN = 1;
+    while(I2C2CONbits.RCEN);
+    I2C2STATbits.I2COV = 0;
+    return(I2C2RCV);
+}
+
+char I2C2_Write(unsigned char WRDATA)  // 主控写
+{
+    I2C2TRN = WRDATA;
+    if(I2C2STATbits.IWCOL)   return -1;
+    else                     return 0;
+}

@@ -60,14 +60,18 @@ void VersionInit(void)
 // 系统硬件初始化.
 void Hardware_Init(void)
 {
-	ADC_Init();
+// TODO:
+// Disable Interrupt.
     Clk_Init();
 	Tmr_Init();
+    ADC_Init();
 	GPIO_Init();
 	CAN_Init();
     PWM_Init();
     Uart_Init();
-    
+    I2C1_Init();
+	EE_Init();
+// Enable Interrupt.   
 }
 
 // 数据初始化.
