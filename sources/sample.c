@@ -44,3 +44,6 @@ void Task_Sample(void)
     Ana_Sample();
 }
 
+
+// √ø∏Ù10msπ¿À„ÀŸ∂».
+

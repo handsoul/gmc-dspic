@@ -11,7 +11,7 @@ typedef struct tagSysRunInfo
     u16 m_ausAI[4];
     u16 m_ausAO[2];
     u32 m_ulAbsEncoder; // 绝对值编码器的原始值.
-    s32 m_ulRelEncoder; // ABZ编码器.
+    s32 m_slRelEncoder; // ABZ编码器.
 
     s32 m_slSpeed;
     s32 m_slAbsPosition;

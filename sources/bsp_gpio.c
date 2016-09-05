@@ -27,6 +27,11 @@ void GPIO_Init(void)
     // RB13 INPUT21
     // RB14 INPUT31
     // RB15 INPUT41
+
+	_TRISB3 = 1;
+	_TRISB4 = 1;
+	_TRISB5 = 1;
+
     _TRISB7 = 0;
     _LATB7  = 0;
 

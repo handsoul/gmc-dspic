@@ -18,10 +18,14 @@
 
 
 
-// 速度和位置计算.
+// 速度和位置计算.(单位是0.0001转/分)
 void CalcPosSpeed(void)
 {
-    
+    // 
+    if (g_stCfgParams.m_ucEncoderType == E_ENCODER_TYPE_REL_ABZ)
+    {
+        
+    }
 }
 
 // 位移控制.

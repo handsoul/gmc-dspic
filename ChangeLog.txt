@@ -1,6 +1,8 @@
 Changelog
 	autor: ksl
 	mail : rtertliu at gmail.com
+2016-07-20
+	i2c/eeprom module done.
 
 2016-07-07
 	gpio module done.(add JTAGEN_OFF option).

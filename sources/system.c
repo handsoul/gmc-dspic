@@ -71,6 +71,7 @@ void Hardware_Init(void)
     Uart_Init();
     I2C1_Init();
 	EE_Init();
+	QEI_Init();
 // Enable Interrupt.   
 }
 

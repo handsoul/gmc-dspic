@@ -34,6 +34,8 @@ int main(void)
 				usCnt = 0;
 				// SendByte(++g_ucSendByte);
 			}
+
+			ReadQeiPos();
 		}
 	}
 }
